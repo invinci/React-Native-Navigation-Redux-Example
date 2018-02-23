@@ -10,13 +10,12 @@ import { Navigation } from "react-native-navigation";
 import { connect } from "react-redux";
 import * as appActions from "../../actions/index";
 
-export class Login extends Component {
+export class Details extends Component {
   render() {
-    alert();
     return (
       <View>
-        <Button large onPress={() => this.onLoginPress()} title="Continuedsda">
-          <Text>Continuedsda</Text>
+        <Button large onPress={() => this.onLoginPress()} title="Details">
+          <Text> Continue Details</Text>
         </Button>
       </View>
     );
@@ -31,4 +30,4 @@ export class Login extends Component {
   }
 }
 
-export default connect()(Login);
+export default connect()(Details);
