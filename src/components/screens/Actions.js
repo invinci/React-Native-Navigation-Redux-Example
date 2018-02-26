@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import Row from "../Row";
-
+import * as appActions from "../../actions/index";
+import { Navigation } from "react-native-navigation";
+import { connect } from "react-redux";
 class Actions extends React.Component {
   constructor(props) {
     super(props);
@@ -150,6 +152,10 @@ class Actions extends React.Component {
     }
   };
 
+  logout = () => {
+    this.props.dispatch(appActions.logout());
+  };
+
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -175,6 +181,11 @@ class Actions extends React.Component {
           onPress={this.toggleFAB}
           platform={"android"}
         />
+        <Row
+          title={"Logout"}
+          onPress={this.logout}
+          // platform={"android"}
+        />
       </ScrollView>
     );
   }
@@ -183,5 +194,4 @@ class Actions extends React.Component {
 const styles = StyleSheet.create({
   container: {}
 });
-
-export default Actions;
+export default connect()(Actions);

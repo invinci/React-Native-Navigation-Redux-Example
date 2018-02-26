@@ -32,7 +32,12 @@ import Details from "./details";
 export function registerScreensNew(store, Provider) {
   Navigation.registerComponent("example.Login", () => Login, store, Provider);
   Navigation.registerComponent("example.Types", () => Types);
-  Navigation.registerComponent("example.Actions", () => Actions);
+  Navigation.registerComponent(
+    "example.Actions",
+    () => Actions,
+    store,
+    Provider
+  );
   Navigation.registerComponent("example.Transitions", () => Transitions);
 
   Navigation.registerComponent("example.Types.Push", () => Push);

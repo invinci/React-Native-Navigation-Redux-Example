@@ -53,6 +53,19 @@ export class Login extends Component {
             >
               <Text style={{ color: "white" }}>Login</Text>
             </Button>
+
+            <Button
+              block
+              style={{
+                marginTop: 50,
+                marginLeft: 20,
+                marginRight: 20,
+                backgroundColor: "#1A1A38"
+              }}
+              onPress={() => this.onRegisterPress()}
+            >
+              <Text style={{ color: "white" }}>Register</Text>
+            </Button>
           </Content>
         </Container>
         <View style={{ flex: 0.2 }} />
@@ -66,6 +79,17 @@ export class Login extends Component {
   */
   onLoginPress() {
     this.props.dispatch(appActions.login());
+  }
+
+  onRegisterPress() {
+    this.props.navigator.push({
+      screen: "example.Types.DummyScreen",
+      title: "Dummy",
+      passProps: {
+        text: "BAcdsjdhkj",
+        bgColor: "red"
+      }
+    });
   }
 }
 

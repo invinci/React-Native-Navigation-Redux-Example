@@ -3,7 +3,6 @@ import { Platform, AppRegistry } from "react-native";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import { Navigation } from "react-native-navigation";
-import registerScreens from "./components/screens/screens.js";
 import * as reducers from "./reducers/index";
 import * as appActions from "./actions/index";
 import thunk from "redux-thunk";
@@ -23,8 +22,19 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     store.subscribe(this.onStoreUpdate.bind(this));
-    store.dispatch(appActions.appInitialized());
+    this.name = "ravi";
+    // store.dispatch(appActions.appInitialized());
+    if (this.name === "ravi") {
+      store.dispatch(appActions.login());
+    } else {
+      store.dispatch(appActions.appInitialized());
+    }
+
     // screen related book keeping
+  }
+
+  componentDidMount() {
+    this.props.dispatch(appActions.login());
   }
 
   onStoreUpdate() {
@@ -105,28 +115,7 @@ export default class App extends Component {
             }
           }
         });
-        // Navigation.startTabBasedApp({
-        //   tabs: [
-        //     {
-        //       label: "Home",
-        //       screen: "ReactNativeReduxExample.HomeTab",
-        //       icon: require("./img/checkmark.png"),
-        //       selectedIcon: require("./img/checkmark.png"),
-        //       title: "Home",
-        //       overrideBackPress: false,
-        //       navigatorStyle: {}
-        //     },
 
-        //     {
-        //       label: "Search",
-        //       screen: "ReactNativeReduxExample.SearchTab",
-        //       icon: require("./img/checkmark.png"),
-        //       selectedIcon: require("./img/checkmark.png"),
-        //       title: "Search",
-        //       navigatorStyle: {}
-        //     }
-        //   ]
-        // });
         return;
 
       default:
