@@ -1,4 +1,4 @@
-package com.reactnativereduxexample;
+package com.cryptocrunchapp;
 
 
 import com.facebook.react.ReactNativeHost;

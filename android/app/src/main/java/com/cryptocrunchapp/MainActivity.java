@@ -1,4 +1,4 @@
-package com.reactnativereduxexample;
+package com.cryptocrunchapp;
 import com.reactnativenavigation.controllers.SplashActivity;
 import com.facebook.react.ReactActivity;
 
