@@ -7,15 +7,17 @@ import registerScreens from "./components/screens/screens.js";
 import * as reducers from "./reducers/index";
 import * as appActions from "./actions/index";
 import thunk from "redux-thunk";
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const reducer = combineReducers(reducers);
-const store = createStoreWithMiddleware(reducer);
-registerScreens(store, Provider);
-
 import {
   registerScreensNew,
   registerScreenVisibilityListener
 } from "./components/screens";
+
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const reducer = combineReducers(reducers);
+const store = createStoreWithMiddleware(reducer);
+// registerScreens(store, Provider);
+registerScreensNew(store, Provider);
+registerScreenVisibilityListener();
 
 export default class App extends Component {
   constructor(props) {
@@ -23,8 +25,6 @@ export default class App extends Component {
     store.subscribe(this.onStoreUpdate.bind(this));
     store.dispatch(appActions.appInitialized());
     // screen related book keeping
-    registerScreensNew();
-    registerScreenVisibilityListener();
   }
 
   onStoreUpdate() {
@@ -43,7 +43,8 @@ export default class App extends Component {
     const tabs = [
       {
         label: "Navigation",
-        screen: "example.Types",
+        // screen: "example.Types",
+        screen: "example.Types.ListScreen",
         icon: require("./img/list.png"),
         title: "Navigation Types"
       },
@@ -68,7 +69,7 @@ export default class App extends Component {
       case "login":
         Navigation.startSingleScreenApp({
           screen: {
-            screen: "ReactNativeReduxExample.Login", // unique ID registered with Navigation.registerScreen
+            screen: "example.Login", // unique ID registered with Navigation.registerScreen
             title: "Welcome", // title of the screen as appears in the nav bar (optional)
             navigatorStyle: { navBarHidden: true }, // override the navigator style for the screen, see "Styling the navigator" below (optional)
             navigatorButtons: {} // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)

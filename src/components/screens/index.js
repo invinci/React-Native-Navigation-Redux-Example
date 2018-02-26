@@ -26,15 +26,29 @@ import CardsInfo from "./transitions/sharedElementTransitions/Cards/Info";
 import Masonry from "./transitions/sharedElementTransitions/Masonry/Masonry";
 import MasonryItem from "./transitions/sharedElementTransitions/Masonry/Item";
 
-export function registerScreensNew() {
+import Login from "./login";
+import Details from "./details";
+
+export function registerScreensNew(store, Provider) {
+  Navigation.registerComponent("example.Login", () => Login, store, Provider);
   Navigation.registerComponent("example.Types", () => Types);
   Navigation.registerComponent("example.Actions", () => Actions);
   Navigation.registerComponent("example.Transitions", () => Transitions);
 
   Navigation.registerComponent("example.Types.Push", () => Push);
   Navigation.registerComponent("example.Types.Drawer", () => Drawer);
-  Navigation.registerComponent("example.Types.Screen", () => Drawer);
-  Navigation.registerComponent("example.Types.ListScreen", () => ListScreen);
+  Navigation.registerComponent(
+    "example.Types.Screen",
+    () => Drawer,
+    store,
+    Provider
+  );
+  Navigation.registerComponent(
+    "example.Types.ListScreen",
+    () => ListScreen,
+    store,
+    Provider
+  );
   Navigation.registerComponent("example.Types.DummyScreen", () => DummyScreen);
   Navigation.registerComponent("example.Types.Modal", () => Modal);
   Navigation.registerComponent("example.Types.LightBox", () => LightBox);
